@@ -3,15 +3,18 @@ using TMPro;
 
 public class CircleManager : MonoBehaviour
 {
+    [SerializeField] private GameObject winScreen;
     public TextMeshProUGUI playerName;
     private int currentPlayerIndex;
     public Player currentPlayer => PlayerManager.Instance.ReturnPlayer(currentPlayerIndex);
+    public int playersInGame;
 
     private void Start()
     {
         if (PlayerManager.Instance != null)
         {
             DisplayNextPlayer(0);
+            playersInGame = PlayerManager.Instance.ReturnLength();
         }
     }
 
@@ -21,6 +24,7 @@ public class CircleManager : MonoBehaviour
 
         if (player.isLost)
         {
+            IsCircleEnded();
             DisplayNextPlayer();
             return;
         }
@@ -37,6 +41,13 @@ public class CircleManager : MonoBehaviour
     public void KickPlayer()
     {
         PlayerManager.Instance.ReturnPlayer(currentPlayerIndex).isLost = true;
+        
+        playersInGame--;
+        if (playersInGame == 1)
+        {
+            winScreen.SetActive(true);
+            winScreen.GetComponent<WinScreen>().Show();
+        }
     }
 
     public bool IsCircleEnded()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,11 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(Instance);
+    }
+
+    public void SortByScore()
+    {
+        players.Sort();
     }
 
     public void LoadGame()
