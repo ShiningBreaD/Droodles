@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class WinScreen : MonoBehaviour
@@ -8,12 +9,19 @@ public class WinScreen : MonoBehaviour
     [SerializeField] private GameObject playerInfoUI;
     [SerializeField] private Transform parent;
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void Show()
     {
-        PlayerManager.Instance.SortByScore();
-        winner.text = PlayerManager.Instance.ReturnPlayer(0).name;
+        int length = PlayerManager.Instance.ReturnLength();
 
-        for (int i = 0; i < PlayerManager.Instance.ReturnLength(); i++)
+        PlayerManager.Instance.SortByScore();
+        winner.text = PlayerManager.Instance.ReturnPlayer(length - 1).name;
+
+        for (int i = length - 1; i > -1; i--)
             CreatePlayerInfoUI(PlayerManager.Instance.ReturnPlayer(i));
 
         animator.SetTrigger("Show");

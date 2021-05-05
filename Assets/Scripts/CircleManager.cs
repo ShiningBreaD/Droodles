@@ -40,11 +40,12 @@ public class CircleManager : MonoBehaviour
 
     public void KickPlayer()
     {
-        PlayerManager.Instance.ReturnPlayer(currentPlayerIndex).isLost = true;
+        currentPlayer.isLost = true;
         
         playersInGame--;
         if (playersInGame == 1)
         {
+            currentPlayer.score++;
             winScreen.SetActive(true);
             winScreen.GetComponent<WinScreen>().Show();
         }
