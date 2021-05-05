@@ -1,25 +1,8 @@
-using TMPro;
-using UnityEngine;
 
-public class Player : MonoBehaviour
+
+public class Player
 {
-    [SerializeField] private TextMeshProUGUI inputText;
-    public new string name;
+    public string name;
+    public bool isLost;
     public int score;
-
-    public void DeletePlayer()
-    {
-        PlayerManager.Instance.RemovePlayer(this);
-        Destroy(gameObject);
-    }
-
-    public void SetName()
-    {
-        name = inputText.text;
-    }
-
-    public void IncreaseScore()
-    {
-        score++;
-    }
 }

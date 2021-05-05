@@ -3,22 +3,51 @@ using UnityEngine.UI;
 
 public class Deck : MonoBehaviour
 {
+    [SerializeField] private CircleManager circle;
     [SerializeField] private Animator Animator;
-    [SerializeField] private Sprite[] Cards;
     [SerializeField] private Image CardUI;
-    private int LastIndex;
+    [SerializeField] private Sprite[] Cards;
+    public int currentCardIndex = -1;
 
-    public void ChangeCard()
+    private void Start()
     {
-        Animator.SetTrigger("Change");
+        Cards = Resources.LoadAll<Sprite>("StandardDeck");
+        SetCardUI();
     }
 
-    public void SetCardUI() // called only at animation at editor
+    public void Count()
     {
-        Sprite nextCard = Cards[LastIndex];
-        
-        if (LastIndex < Cards.Length)
-            LastIndex++;
+        circle.currentPlayer.score++;
+
+        if (circle.IsCircleEnded())
+            ChangeCard();
+        circle.DisplayNextPlayer();
+    }
+
+    public void GiveUp()
+    {
+        circle.KickPlayer();
+
+        if (circle.IsCircleEnded())
+            ChangeCard();
+        circle.DisplayNextPlayer();
+    }
+
+    private void ChangeCard()
+    {
+        Animator.SetTrigger("Change");
+
+        //SetCardUI is called after that line in animation
+    }
+
+    public void SetCardUI()
+    {
+        if (currentCardIndex < Cards.Length - 1)
+            currentCardIndex++;
+        else
+            currentCardIndex = 0;
+
+        Sprite nextCard = Cards[currentCardIndex];
 
         CardUI.sprite = nextCard;
     }

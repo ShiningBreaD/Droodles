@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -12,7 +10,7 @@ public class MascotsThoughtsTests
     [TestCase(1)]
     public void SetMascotThought(int range)
     {
-        GameObject mascotsThoughtsObject = GameObject.Instantiate(new GameObject());
+        GameObject mascotsThoughtsObject = Object.Instantiate(new GameObject());
         MascotsThoughts mascotsThoughts = mascotsThoughtsObject.AddComponent<MascotsThoughts>();
         TextMeshProUGUI displayedThought = mascotsThoughtsObject.AddComponent<TextMeshProUGUI>();
 
