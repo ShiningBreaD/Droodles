@@ -2086,7 +2086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ac1a6483e10d34b8a18688b9f6b74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adManager: {fileID: 0}
   animator: {fileID: 1601955943}
   winner: {fileID: 271527757}
   playerInfoUI: {fileID: 7967358497418009784, guid: 221d1d821d95be143ba9fdddfa260cad, type: 3}

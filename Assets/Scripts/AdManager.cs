@@ -12,6 +12,8 @@ public class AdManager : MonoBehaviour
         else if (Instance != this)
             Destroy(gameObject);
 
+        DontDestroyOnLoad(Instance);
+
         if (Advertisement.isSupported)
             Advertisement.Initialize("4118703", false);
     }
