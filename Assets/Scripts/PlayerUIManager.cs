@@ -5,10 +5,19 @@ public class PlayerUIManager : MonoBehaviour
     [SerializeField] private GameObject playerFieldInput;
     [SerializeField] private Transform parentForPlayerFieldInput;
 
-    public void CreatePlayerAndItsUI()
+    private void Start()
     {
-        Player player = Instantiate(playerFieldInput, parentForPlayerFieldInput).GetComponent<PlayerInputField>().player;
-        PlayerManager.Instance.AddPlayer(player);
+        for (int i = 0; i < 2; i++)
+        {
+            CreatePlayerAndItsUI().DisableDeleteButton();
+        }
+    }
+
+    public PlayerInputField CreatePlayerAndItsUI()
+    {
+        PlayerInputField playerUI = Instantiate(playerFieldInput, parentForPlayerFieldInput).GetComponent<PlayerInputField>();
+        PlayerManager.Instance.AddPlayer(playerUI.player);
+        return playerUI;
     }
 
     public void DeletePlayerAndItsUI(PlayerInputField playerUI)
