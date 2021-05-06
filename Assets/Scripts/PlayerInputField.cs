@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerInputField : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI inputText;
+    [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button deleteButton;
     private PlayerUIManager playerUIManager;
     public Player player = new Player();
@@ -14,9 +14,18 @@ public class PlayerInputField : MonoBehaviour
         playerUIManager = GetComponentInParent<PlayerUIManager>();
     }
 
+    public void SetName(string name)
+    {
+        inputField.SetTextWithoutNotify(name);
+        player.name = name;
+    }
+
     public void SetName()
     {
-        player.name = inputText.text;
+        if (inputField.text == "")
+            inputField.SetTextWithoutNotify(player.name);
+        else
+            player.name = inputField.text;
     }
 
     public void DeletePlayer()

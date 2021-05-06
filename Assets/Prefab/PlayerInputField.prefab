@@ -54,7 +54,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 1100
+  m_PreferredWidth: 900
   m_PreferredHeight: 180
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40582ad70c755c4eb918b23ceaff8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputText: {fileID: 2959213129665272732}
+  inputField: {fileID: 2959213129182127459}
   deleteButton: {fileID: 2959213129503642828}
 --- !u!1 &2959213129182127457
 GameObject:
@@ -505,8 +505,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 1252849456665485316}
+        m_TargetAssemblyTypeName: PlayerInputField, Drudls
         m_MethodName: DeletePlayer
         m_Mode: 1
         m_Arguments:

@@ -9,15 +9,18 @@ public class PlayerUIManager : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            CreatePlayerAndItsUI().DisableDeleteButton();
+            PlayerInputField playerUI = Instantiate(playerFieldInput, parentForPlayerFieldInput).GetComponent<PlayerInputField>();
+            playerUI.SetName("Игрок " + (PlayerManager.Instance.ReturnLength() + 1).ToString());
+            playerUI.DisableDeleteButton();
+            PlayerManager.Instance.AddPlayer(playerUI.player);
         }
     }
 
-    public PlayerInputField CreatePlayerAndItsUI()
+    public void CreatePlayerAndItsUI()
     {
         PlayerInputField playerUI = Instantiate(playerFieldInput, parentForPlayerFieldInput).GetComponent<PlayerInputField>();
+        playerUI.SetName("Игрок " + (PlayerManager.Instance.ReturnLength() + 1).ToString());
         PlayerManager.Instance.AddPlayer(playerUI.player);
-        return playerUI;
     }
 
     public void DeletePlayerAndItsUI(PlayerInputField playerUI)

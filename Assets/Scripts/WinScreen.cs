@@ -4,6 +4,8 @@ using TMPro;
 
 public class WinScreen : MonoBehaviour
 {
+    private bool isAdShowed;
+
     [SerializeField] private Animator animator;
     [SerializeField] private TextMeshProUGUI winner;
     [SerializeField] private GameObject playerInfoUI;
@@ -11,7 +13,17 @@ public class WinScreen : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(0);
+        if (!isAdShowed)
+        {
+            AdManager.Instance.ShowAd();
+            isAdShowed = true;
+        }
+        else
+        {
+            Destroy(PlayerManager.Instance.gameObject);
+            Destroy(DeckSelectionManager.Instance.gameObject);
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void Show()

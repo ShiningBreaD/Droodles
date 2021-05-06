@@ -45,6 +45,9 @@ public class CircleManager : MonoBehaviour
         playersInGame--;
         if (playersInGame == 1)
         {
+            IsCircleEnded();
+            DisplayNextPlayer();
+
             currentPlayer.score++;
             winScreen.SetActive(true);
             winScreen.GetComponent<WinScreen>().Show();
