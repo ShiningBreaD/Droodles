@@ -6,6 +6,5 @@ public class Deck : MonoBehaviour
     public Color headerColor;
     public Color titleColor;
     public string cardsSpritesPath;
-    public string animationTriggerName;
     public new string name;
 }

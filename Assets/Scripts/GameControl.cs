@@ -8,7 +8,7 @@ public class GameControl : MonoBehaviour
     [SerializeField] private Animator Animator;
     [SerializeField] private Image CardUI;
     [SerializeField] private Sprite[] cards;
-    [SerializeField] private Image cardShirt;
+    [SerializeField] private Image[] cardShirts;
     [SerializeField] private Image header;
     [SerializeField] private TextMeshProUGUI headerTitle;
     [SerializeField] private TextMeshProUGUI headerPlayerName;
@@ -23,10 +23,11 @@ public class GameControl : MonoBehaviour
         headerTitle.color = deck.titleColor;
         headerPlayerName.color = deck.titleColor;
 
-        cardShirt.sprite = deck.icon;
+        for (int i = 0; i < cardShirts.Length; i++)
+            cardShirts[i].sprite = deck.icon;
+        
         cards = Resources.LoadAll<Sprite>(deck.cardsSpritesPath);
         SetCardUI();
-        Animator.SetTrigger(deck.animationTriggerName);
     }
 
     public void Count()
