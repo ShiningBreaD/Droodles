@@ -17,17 +17,14 @@ public class Timer : MonoBehaviour
         timeInSeconds -= Time.deltaTime;
         UpdateText();
         if (timeInSeconds < 0)
-        {
             gameControl.GiveUp();
-            ResetTimer();
-        }
     }
 
     public void ResetTimer()
     {
         if (PlayerManager.Instance.timeInSeconds == 0f)
         {
-            print("Timer == 0");
+            SetTextDefault();
             return;
         }
 
@@ -40,6 +37,11 @@ public class Timer : MonoBehaviour
     public void UpdateText()
     {
         title.text = Mathf.RoundToInt(timeInSeconds).ToString();
+    }
+
+    private void SetTextDefault()
+    {
+        title.text = "Нет таймера";
     }
 
     private void StartTimer()

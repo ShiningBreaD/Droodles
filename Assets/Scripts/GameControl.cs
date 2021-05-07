@@ -45,6 +45,7 @@ public class GameControl : MonoBehaviour
 
     public void GiveUp()
     {
+        timer.ResetTimer();
         circle.KickPlayer();
 
         if (circle.IsCircleEnded())
