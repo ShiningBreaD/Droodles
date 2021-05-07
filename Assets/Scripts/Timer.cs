@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour
 
     private void SetTextDefault()
     {
-        title.text = "Нет таймера";
+        title.text = "Бесконечность";
     }
 
     private void StartTimer()
