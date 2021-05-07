@@ -1,11 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; set; }
+    public Slider timer;
+    public int timeInSeconds;
     private List<Player> players = new List<Player>();
 
     private void Awake()
@@ -25,6 +27,7 @@ public class PlayerManager : MonoBehaviour
 
     public void LoadGame()
     {
+        timeInSeconds = Mathf.RoundToInt(timer.value);
         SceneManager.LoadScene(1);
     }
 

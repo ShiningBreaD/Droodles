@@ -6,12 +6,14 @@ public class GameControl : MonoBehaviour
 {
     [SerializeField] private CircleManager circle;
     [SerializeField] private Animator Animator;
+    [SerializeField] private Timer timer;
     [SerializeField] private Image CardUI;
     [SerializeField] private Sprite[] cards;
     [SerializeField] private Image[] cardShirts;
     [SerializeField] private Image header;
     [SerializeField] private TextMeshProUGUI headerTitle;
     [SerializeField] private TextMeshProUGUI headerPlayerName;
+    [SerializeField] private TextMeshProUGUI timerTitle;
     public int currentCardIndex = -1;
 
     private void Start()
@@ -22,6 +24,7 @@ public class GameControl : MonoBehaviour
         header.color = deck.headerColor;
         headerTitle.color = deck.titleColor;
         headerPlayerName.color = deck.titleColor;
+        timerTitle.color = deck.titleColor;
 
         for (int i = 0; i < cardShirts.Length; i++)
             cardShirts[i].sprite = deck.icon;
@@ -32,6 +35,7 @@ public class GameControl : MonoBehaviour
 
     public void Count()
     {
+        timer.ResetTimer();
         circle.currentPlayer.score++;
 
         if (circle.IsCircleEnded())
