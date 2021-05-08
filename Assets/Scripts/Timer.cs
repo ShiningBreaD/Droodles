@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
-        if (PlayerManager.Instance.timeInSeconds == 0f)
+        if (PlayerManager.Instance.timeInSeconds == 9f)
         {
             SetTextDefault();
             return;

@@ -11,7 +11,7 @@ public class TimerSlider : MonoBehaviour
     {
         float value = slider.value;
 
-        if (value != 0)
+        if (value != 9)
             title.text = "Время на ход - " + value.ToString();
         else
             title.text = "Время на ход - нет";
