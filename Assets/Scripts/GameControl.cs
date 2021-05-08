@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +32,9 @@ public class GameControl : MonoBehaviour
             cardShirts[i].sprite = deck.icon;
         
         cards = Resources.LoadAll<Sprite>(deck.cardsSpritesPath);
+        System.Random random = new System.Random(DateTime.Now.Millisecond);
+        cards = cards.OrderBy(x => random.Next()).ToArray();
+
         SetCardUI();
     }
 
