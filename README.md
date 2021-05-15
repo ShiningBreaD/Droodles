@@ -1,4 +1,4 @@
-# Drudls
+# Droodles
 Lots of cards with strange schematic drawings - this is a fun, family board game "Drudls". 
 In it you have to show your imagination better than anyone else, developing your creativity. Now it's on your phone!
 
