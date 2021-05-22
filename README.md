@@ -12,7 +12,3 @@ Recommended number of players: 4 to 10
 
 All players, after looking at a schematic picture, think up variations of what is depicted on them in a circle until they run out of ideas. 
 Whoever lasts the longest on the wings of fantasy wins.
-
-# License
-This project is not licensed.
-We welcome all developers to use this repository for their projects.
