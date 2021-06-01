@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.Purchasing;
 
 public class AdManager : MonoBehaviour
 {
     public static AdManager Instance { get; set; }
+    private bool isAdsAvailable = true;
 
     private void Start()
     {
@@ -20,7 +22,17 @@ public class AdManager : MonoBehaviour
 
     public void ShowAd()
     {
-        if (Advertisement.IsReady())
+        if (isAdsAvailable && Advertisement.IsReady())
             Advertisement.Show("Interstitial_Android");
+    }
+
+    public void DisableAds()
+    {
+        isAdsAvailable = false;
+    }
+
+    public void OnDisableAdsFailure(Product product, PurchaseFailureReason failureReason)
+    {
+        Debug.LogError("Purchase of product: " + product.definition.id + " failed because " + failureReason);
     }
 }

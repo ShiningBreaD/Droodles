@@ -1,6 +1,5 @@
 {
     "name": "Drudls",
-    "rootNamespace": "",
     "references": [
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:6546d7765b4165b40850b3667f981c26",
@@ -9,7 +8,11 @@
         "GUID:ff6de30450f3748908ff580f6ec64d9a",
         "GUID:eb51336d7912e41739bc491a768fa824",
         "GUID:11d2bef2c8c1341e283cdbbebf87d91b",
-        "GUID:a660b633280694481b1769d89268eb3c"
+        "GUID:a660b633280694481b1769d89268eb3c",
+        "GUID:e25a61468ff30f44fad56a6b40062363",
+        "GUID:dd4fa548e91bdbc459af7707fa97a8b7",
+        "GUID:60bfecf5cb232594891bc622f40d6bed",
+        "GUID:fd918dc5d8d63e64d86ce0ae62e38fd3"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
