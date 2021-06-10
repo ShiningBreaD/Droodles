@@ -5,7 +5,7 @@ using UnityEngine.Purchasing;
 public class AdManager : MonoBehaviour
 {
     public static AdManager Instance { get; set; }
-    private bool isAdsAvailable = true;
+    public bool isAdsDisabled { get; set; }
 
     private void Start()
     {
@@ -22,13 +22,8 @@ public class AdManager : MonoBehaviour
 
     public void ShowAd()
     {
-        if (isAdsAvailable && Advertisement.IsReady())
+        if (!isAdsDisabled && Advertisement.IsReady())
             Advertisement.Show("Interstitial_Android");
-    }
-
-    public void DisableAds()
-    {
-        isAdsAvailable = false;
     }
 
     public void OnDisableAdsFailure(Product product, PurchaseFailureReason failureReason)

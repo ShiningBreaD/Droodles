@@ -1,0 +1,18 @@
+{
+    "name": "UnityPurchasingPlagin",
+    "references": [
+        "GUID:e25a61468ff30f44fad56a6b40062363",
+        "GUID:dd4fa548e91bdbc459af7707fa97a8b7",
+        "GUID:60bfecf5cb232594891bc622f40d6bed",
+        "GUID:fd918dc5d8d63e64d86ce0ae62e38fd3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

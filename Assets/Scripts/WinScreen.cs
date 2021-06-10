@@ -13,7 +13,7 @@ public class WinScreen : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        if (!isAdShowed)
+        if (!AdManager.Instance.isAdsDisabled && !isAdShowed)
         {
             AdManager.Instance.ShowAd();
             isAdShowed = true;

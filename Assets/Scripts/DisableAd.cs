@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.Purchasing;
 
-public class BuyDeck : MonoBehaviour
+public class DisableAd : MonoBehaviour
 {
-    [SerializeField] public Deck buyableDeck;
-    [SerializeField] public string productId;
-
     private void Start()
     {
-        if (PurchasesManager.CheckPurchaseState(productId))
+        if (PurchasesManager.CheckPurchaseState("remove_ads"))
             OnPurchaseComplete();
     }
 
     public void OnPurchaseComplete()
     {
-        DeckSelectionManager.Instance.AddDeck(buyableDeck);
+        AdManager.Instance.isAdsDisabled = true;
         gameObject.SetActive(false);
     }
 
