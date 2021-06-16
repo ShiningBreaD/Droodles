@@ -7,7 +7,7 @@ public class AdManager : MonoBehaviour
     public static AdManager Instance { get; set; }
     public bool isAdsDisabled { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
@@ -24,10 +24,5 @@ public class AdManager : MonoBehaviour
     {
         if (!isAdsDisabled && Advertisement.IsReady())
             Advertisement.Show("Interstitial_Android");
-    }
-
-    public void OnDisableAdsFailure(Product product, PurchaseFailureReason failureReason)
-    {
-        Debug.LogError("Purchase of product: " + product.definition.id + " failed because " + failureReason);
     }
 }

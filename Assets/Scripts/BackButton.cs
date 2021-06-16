@@ -1,30 +1,29 @@
-﻿#if PLATFORM_ANDROID
-
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public class BackButton : MonoBehaviour
 {
-    private static event Action GoBack;
+    public static event Action GoBack;
 
-    public static Action OnGoback
-    {
-        set
-        {
-            if (GoBack != null)
-                GoBack = null;
-
-            GoBack += value;
-        }
-    }
-
-    private void OnGUI()
+    private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            if (GoBack == null)
+                GoBack += MoveApplicationToBack;
+            
             GoBack();
+
+            GoBack = null;
+        }
+    }
+
+    private void MoveApplicationToBack()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            AndroidJavaObject activity = new AndroidJavaClass(Application.identifier);
+            activity.Call<bool>("moveTaskToBack", true);
         }
     }
 }
-
-#endif

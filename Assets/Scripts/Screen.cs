@@ -19,6 +19,6 @@ public class Screen : MonoBehaviour
         else
             Animator.SetBool("IsShown", false);
 
-        BackButton.OnGoback = ChangeAnimationState;
+        BackButton.GoBack += ChangeAnimationState;
     }
 }

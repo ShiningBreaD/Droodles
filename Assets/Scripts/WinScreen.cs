@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -13,7 +14,7 @@ public class WinScreen : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        if (!AdManager.Instance.isAdsDisabled && !isAdShowed)
+        if (Advertisement.isInitialized && !AdManager.Instance.isAdsDisabled && !isAdShowed)
         {
             AdManager.Instance.ShowAd();
             isAdShowed = true;
