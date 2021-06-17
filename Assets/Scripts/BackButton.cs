@@ -20,9 +20,11 @@ public class BackButton : MonoBehaviour
 
     private void MoveApplicationToBack()
     {
+        print("Move task to back");
+
         if (Application.platform == RuntimePlatform.Android)
         {
-            AndroidJavaObject activity = new AndroidJavaClass(Application.identifier);
+            AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
             activity.Call<bool>("moveTaskToBack", true);
         }
     }

@@ -3,11 +3,14 @@ using UnityEngine.Purchasing;
 
 public abstract class Purchasable : MonoBehaviour
 {
-    [SerializeField] protected string productId;
+    protected string productId;
     public string ProductID
     {
         get
         {
+            if (productId == default)
+                productId = GetComponent<IAPButton>().productId;
+
             return productId;
         }
     }
