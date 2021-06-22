@@ -5,13 +5,18 @@ public class BackButton : MonoBehaviour
 {
     public static event Action GoBack;
 
+    public static void SetEventNull()
+    {
+        GoBack = null;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && !Screen.isAnimationRunning)
         {
             if (GoBack == null)
                 GoBack += MoveApplicationToBack;
-            
+
             GoBack();
 
             GoBack = null;

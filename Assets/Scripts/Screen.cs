@@ -1,24 +1,49 @@
+using System.Collections;
 using UnityEngine;
 
 public class Screen : MonoBehaviour
 {
-    [SerializeField] private Animator Animator;
+    public static bool isAnimationRunning { get; private set; }
 
-    public void DisableObject()
+    public ExtendedCoroutine ChangeVisibilityCoroutine { get; private set; }
+
+    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private float speed;
+
+    private void Start()
     {
-        gameObject.SetActive(false);
+        ChangeVisibilityCoroutine = new ExtendedCoroutine(this, ChangeVisibility);
     }
 
     public void ChangeAnimationState()
     {
-        if (gameObject.activeSelf == false)
-        {
-            gameObject.SetActive(true);
-            Animator.SetBool("IsShown", true);
-        }
-        else
-            Animator.SetBool("IsShown", false);
+        ChangeVisibilityCoroutine.Start();
+    }
 
-        BackButton.GoBack += ChangeAnimationState;
+    public void SetBackButtonEvent(bool shouldBeNull)
+    {
+        if (!shouldBeNull)
+            BackButton.GoBack += ChangeAnimationState;
+        else
+            BackButton.SetEventNull();
+    }
+
+    private IEnumerator ChangeVisibility()
+    {
+        isAnimationRunning = true;
+
+        float target = canvasGroup.alpha == 1f ? 0.01f : 1f;
+
+        while (canvasGroup.alpha != target)
+        {
+            if (canvasGroup.alpha != target)
+                canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, target, Time.deltaTime * speed);
+
+            yield return null;
+        }
+
+        canvasGroup.blocksRaycasts = !canvasGroup.blocksRaycasts;
+
+        isAnimationRunning = false;
     }
 }
