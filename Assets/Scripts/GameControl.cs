@@ -20,7 +20,6 @@ public class GameControl : MonoBehaviour
 
     private void Start()
     {
-
         Deck deck = DeckSelectionManager.Instance.SelectedDeck;
 
         header.color = deck.headerColor;

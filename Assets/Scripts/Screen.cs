@@ -7,7 +7,6 @@ public class Screen : MonoBehaviour
 
     public ExtendedCoroutine ChangeVisibilityCoroutine { get; private set; }
 
-    [SerializeField] private Animator animator;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private float speed;
 
@@ -18,8 +17,7 @@ public class Screen : MonoBehaviour
 
     public void ChangeAnimationState()
     {
-        animator.SetBool("IsShown", !animator.GetBool("IsShown"));
-        //ChangeVisibilityCoroutine.Start();
+        ChangeVisibilityCoroutine.Start();
     }
 
     public void SetBackButtonEvent(bool shouldBeNull)
@@ -34,12 +32,15 @@ public class Screen : MonoBehaviour
     {
         isAnimationRunning = true;
 
-        float target = canvasGroup.alpha == 1f ? 0f : 1f;
+        bool isVisible = canvasGroup.alpha == 1f;
+        float target = isVisible ? 0f : 1f;
+        
+        Vector2 targetScale = isVisible ? canvasGroup.transform.localScale * 1.2f : canvasGroup.transform.localScale / 1.2f;
 
         while (canvasGroup.alpha != target)
         {
-            if (canvasGroup.alpha != target)
-                canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, target, speed * Time.deltaTime);
+            canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, target, speed * Time.deltaTime);
+            canvasGroup.transform.localScale = Vector2.MoveTowards(canvasGroup.transform.localScale, targetScale, speed / 2 * Time.deltaTime);
 
             yield return null;
         }
