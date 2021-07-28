@@ -10,7 +10,7 @@ public class Screen : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private float speed;
 
-    private void Start()
+    private void Awake()
     {
         ChangeVisibilityCoroutine = new ExtendedCoroutine(this, ChangeVisibility);
     }
